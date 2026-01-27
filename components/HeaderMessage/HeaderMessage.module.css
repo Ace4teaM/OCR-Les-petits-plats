@@ -1,0 +1,55 @@
+.container {
+    position: relative;
+    padding: 0;
+    margin: 0;
+    height: 450px;
+}
+
+img.banner {
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+img.logo {
+    position: absolute;
+    top:30;
+    left: 30;
+    width: 16%;
+}
+
+.content{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.content h2 {
+    width: 60%;
+    font-size: 45px;
+    color: #FFD15B;
+    font-weight: 400;
+    font-family: var(--font-anton);
+    text-align: center;
+    letter-spacing: 0;
+}
+
+
+.content p {
+    width: 60%;
+    font-size: 26px;
+    color: white;
+    font-weight: 400;
+    font-family: var(--font-anton);
+    text-align: center;
+    letter-spacing: 0;
+}
+
