@@ -22,6 +22,11 @@ img.banner {
   font-family: var(--font-manrope);
 }
 
+.content p{
+  height: 95px;
+  overflow: hidden;
+}
+
 .card h2 {
   color: #333;
   font-size: 18px;
