@@ -1,0 +1,12 @@
+
+.recipes {
+  display: grid;
+
+  /* 3 colonnes 1 part */
+  grid-template-columns: 1fr 1fr 1fr;
+
+  /* espace entre lignes et colonnes */
+  gap: 40px;
+  
+  padding: 0px 60px 60px 60px;
+}

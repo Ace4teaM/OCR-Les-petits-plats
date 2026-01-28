@@ -2,13 +2,10 @@
 import { useEffect, useState } from 'react';
 import styles from './TagList.module.css';
 
-const TagList = ({tags, title, selectionState}) => {
+const TagList = ({tags, title, selection, setSelection}) => {
 
   // contient les éléments sélectionnables
   const [selectable, setSelectable] = useState([...tags]);
-
-  // contient les éléments sélectionnés
-  const [selection, setSelection] = selectionState ?? useState([]);
 
   // texte de la saisie
   const [filter, setFilter] = useState("");
