@@ -20,6 +20,7 @@ export default function Header() {
             onChange={(e) => setSearchText(e.target.value)}
             />
             <img src="/images/search.png" alt="logo"></img>
+            <span className={`${styles.cross} ${searchText.length > 0 ? '' : styles.hidden}`} onClick={() => setSearchText("")}></span>
         </div>
         </div>
     </header>

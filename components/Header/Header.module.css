@@ -43,25 +43,38 @@ img.logo {
     letter-spacing: 0;
 }
 
-
-.search{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
+.search {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .search input {
-    width: 80%;
-    height: 70px;
-    border-radius: 10px;
-    border: none;
-    padding: 0px 70px 0px 24px;
-    font-size: 16px;
+  width: 80%;
+  height: 70px;
+  border-radius: 10px;
+  border: none;
+  padding: 0 110px 0 24px;
+  font-size: 16px;
 }
-
 
 .search img {
-    margin-left: -60px;
+  position: absolute;
+  top:8px;
+  right: 120px;
 }
 
+.cross {
+  position: absolute;
+  top:28px;
+  right: 190px;
+  width: 16px;
+  height: 16px;
+  background: url("/cross.png") center / contain no-repeat;
+  cursor: pointer;
+}
+
+.hidden{
+    display: none;
+}
