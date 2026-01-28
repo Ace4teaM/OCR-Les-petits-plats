@@ -7,11 +7,18 @@ const SharedContext = createContext(null);
 
 export function SharedProvider({ children }) {
 
+  // la liste des tags ingredients sélectionnés
   const [selectedIngredients, setSelectedIngredients] = useState([]);
+  // la liste des tags appareils sélectionnés
   const [selectedAppliances, setSelectedAppliances] = useState([]);
+  // la liste des tags ustensils sélectionnés
   const [selectedUstensils, setSelectedUstensils] = useState([]);
+  // le texte de recherche
   const [searchText, setSearchText] = useState([]);
+  // la liste des recettes
   const [recipes] = useState(data);
+  // la liste des recettes filtrées
+  const [filteredRecipes, setFilteredRecipes] = useState(recipes);
 
   return (
     <SharedContext.Provider value={
@@ -19,7 +26,8 @@ export function SharedProvider({ children }) {
         selectedIngredients, setSelectedIngredients, 
         selectedAppliances, setSelectedAppliances, 
         selectedUstensils, setSelectedUstensils, 
-        searchText, setSearchText , 
+        searchText, setSearchText,
+        filteredRecipes, setFilteredRecipes,
         recipes
       }}>
       {children}

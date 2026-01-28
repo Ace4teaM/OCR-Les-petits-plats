@@ -7,43 +7,49 @@ import { useShared } from "@/components/SharedContext/SharedContext";
 
 export default function SearchBar() {
   
-  const {recipes} = useShared();
+  const {filteredRecipes} = useShared();
   const {selectedIngredients, setSelectedIngredients} = useShared();
   const {selectedAppliances, setSelectedAppliances} = useShared();
   const {selectedUstensils, setSelectedUstensils} = useShared();
 
-  function readIngredients(){
+  const readIngredients = () => {
     const tmp = new Set();
-    for (const i of recipes.map(r => r.ingredients)) {
+    for (const i of filteredRecipes.map(r => r.ingredients)) {
       for (const ii of i){
         tmp.add(ii.ingredient[0].toUpperCase() + ii.ingredient.slice(1).toLowerCase());}
     }
     return [...tmp].sort();
   }
 
-  const ingredients = readIngredients();
+  const [ingredients, setIngredients] = useState(readIngredients());
 
-  function readUstensils(){
+  const readUstensils = () => {
     const tmp = new Set();
-    for (const i of recipes.map(r => r.ustensils)) {
+    for (const i of filteredRecipes.map(r => r.ustensils)) {
       for (const ii of i){
         tmp.add(ii[0].toUpperCase() + ii.slice(1).toLowerCase());}
     }
     return [...tmp].sort();
   }
 
-  const ustensils = readUstensils();
+  const [ustensils, setUstensils] = useState(readUstensils());
 
-  function readAppliances(){
+  const readAppliances = () => {
     const tmp = new Set();
-    for (const i of recipes.map(r => r.appliance)) {
+    for (const i of filteredRecipes.map(r => r.appliance)) {
       tmp.add(i[0].toUpperCase() + i.slice(1).toLowerCase());
     }
     return [...tmp].sort();
   }
 
-  const appliances = readAppliances();
+  const [appliances, setAppliances] = useState(readAppliances());
 
+
+  useEffect(() => {
+    setIngredients(readIngredients());
+    setUstensils(readUstensils());
+    setAppliances(readAppliances());
+  }, [filteredRecipes]);
 
   return (
     <section className={styles.container}>
@@ -51,7 +57,7 @@ export default function SearchBar() {
         <TagList tags={ingredients} title="Ingredients" selection={selectedIngredients} setSelection={setSelectedIngredients}></TagList>
         <TagList tags={appliances} title="Appareils" selection={selectedAppliances} setSelection={setSelectedAppliances}></TagList>
         <TagList tags={ustensils} title="Ustensiles" selection={selectedUstensils} setSelection={setSelectedUstensils}></TagList>
-        <span>{recipes.length} recettes</span>
+        <span>{filteredRecipes.length} recettes</span>
       </div>
       <div className={styles.tags}>
         {selectedIngredients.map((ingredient) => <span key={ingredient}>{ingredient}<span className={styles.cross} onClick={() => setSelectedIngredients(selectedIngredients.filter(i => i !== ingredient))}></span></span>)}

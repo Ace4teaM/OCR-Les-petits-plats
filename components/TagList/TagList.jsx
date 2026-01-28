@@ -13,14 +13,10 @@ const TagList = ({tags, title, selection, setSelection}) => {
   // affiche/cache le détail de la liste
   const [show, setShow] = useState(false);
 
-  useEffect(() => {
-    console.log(selection)
-  }, [selection])
-
   // Filtre les éléments sélectionnables en fonction de la saisie utilisateur
   useEffect(() => {
     setSelectable(tags.filter(t => t.toLowerCase().includes(filter.toLowerCase()) && !selection.includes(t)));
-  }, [filter])
+  }, [tags, filter])
 
   return (
     <div className={styles.container}>
