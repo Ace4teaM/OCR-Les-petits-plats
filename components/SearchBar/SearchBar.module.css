@@ -2,13 +2,15 @@
     position: relative;
     padding: 60px;
     margin: 0;
-    height: 100px;
+}
+
+.content {
     display: flex;
     justify-items: flex-start;
     align-items: center;
 }
 
-.container > select
+.content > select
 {
     margin-right: 50px;
     width: 150px;
@@ -21,9 +23,39 @@
     font-family: var(--font-manrope);
 }
 
-.container > span
+.content > span
 {
     font-size: 16px;
     font-family: var(--font-anton);
     margin-left: auto;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    justify-items: flex-start;
+    align-items: center;
+    margin-top: 20px;
+    gap: 10px;
+}
+
+.tags > span{
+    position: relative;
+    font-size: 14px;
+    background-color: #FFD15B;
+    padding: 8px 26px 8px 6px;
+    border-radius: 6px;
+}
+
+.cross {
+  position: absolute;
+  top:calc(50% - 5px);
+  right: 10px;
+  background-image: url("/cross.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
+  width: 10px;
+  height: 10px;
+  cursor: pointer;
 }
