@@ -17,6 +17,7 @@ export default function RecipesView() {
   useEffect(() => {
     let list = [...recipes];
 
+    // si le nom/description contient le texte de recherche ou un des ingrédients
     if (searchText.length >= 3) {
       list = list.filter(
         (r) =>
@@ -28,6 +29,7 @@ export default function RecipesView() {
       );
     }
 
+    // et les ingrédients sélectionnés
     if (selectedIngredients.length > 0) {
       list = list.filter((r) =>
         selectedIngredients.every((ing) =>
@@ -38,6 +40,7 @@ export default function RecipesView() {
       );
     }
 
+    // et les appareils sélectionnés
     if (selectedAppliances.length > 0) {
       list = list.filter((r) =>
         selectedAppliances.every(
@@ -46,6 +49,7 @@ export default function RecipesView() {
       );
     }
 
+    // et les ustensiles sélectionnés
     if (selectedUstensils.length > 0) {
       list = list.filter((r) =>
         selectedUstensils.every((ust) =>
