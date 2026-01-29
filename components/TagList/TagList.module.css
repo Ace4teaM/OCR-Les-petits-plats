@@ -8,7 +8,7 @@
   border-radius: 8px;
   width: 180px;
   height: 45px;
-  
+
   margin-right: 50px;
   font-size: 15px;
 }
@@ -19,7 +19,7 @@
 
 .popup {
   position: absolute;
-  top:35px;
+  top: 35px;
   padding: 10px;
   background-color: white;
   z-index: 1000;
@@ -46,7 +46,7 @@
 
 .arrow {
   position: absolute;
-  top:calc(45px / 2 - 15px);
+  top: calc(45px / 2 - 15px);
   right: 6px;
   background-image: url("/arrow.png");
   background-repeat: no-repeat;
@@ -67,7 +67,7 @@
 
 .cross {
   position: absolute;
-  top:calc(32px / 2 - 3px);
+  top: calc(32px / 2 - 3px);
   right: 28px;
   background-image: url("/cross.png");
   background-repeat: no-repeat;
@@ -80,7 +80,7 @@
 
 .find {
   position: absolute;
-  top:calc(32px / 2 - 8px);
+  top: calc(32px / 2 - 8px);
   right: 6px;
   background-image: url("/search.png");
   background-repeat: no-repeat;
@@ -89,7 +89,6 @@
   width: 16px;
   height: 16px;
 }
-
 
 .item {
   position: relative;
@@ -103,16 +102,14 @@
   padding: 2px 6px;
 }
 
-
 .selected {
-  background-color: #FFD15B;
+  background-color: #ffd15b;
   padding: 8px 6px;
 }
 
-
 .close {
   position: absolute;
-  top:calc(32px / 2 - 8px);
+  top: calc(32px / 2 - 8px);
   right: 8px;
   background-image: url("/close.png");
   background-repeat: no-repeat;

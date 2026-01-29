@@ -19,7 +19,7 @@ const geistMono = Geist_Mono({
 const anton = Anton({
   variable: "--font-anton",
   subsets: ["latin"],
-  weight: "400"
+  weight: "400",
 });
 
 export const metadata = {
@@ -29,10 +29,11 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} ${anton.variable} ${manrope.variable}`}>
-      <body>
-        {children}
-      </body>
+    <html
+      lang="en"
+      className={`${geistSans.variable} ${geistMono.variable} ${anton.variable} ${manrope.variable}`}
+    >
+      <body>{children}</body>
     </html>
   );
 }

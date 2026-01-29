@@ -1,12 +1,11 @@
 "use client";
 
 import { createContext, useContext, useState } from "react";
-import data from '@/private/recipes.json';
+import data from "@/private/recipes.json";
 
 const SharedContext = createContext(null);
 
 export function SharedProvider({ children }) {
-
   // la liste des tags ingredients sélectionnés
   const [selectedIngredients, setSelectedIngredients] = useState([]);
   // la liste des tags appareils sélectionnés
@@ -21,15 +20,21 @@ export function SharedProvider({ children }) {
   const [filteredRecipes, setFilteredRecipes] = useState(recipes);
 
   return (
-    <SharedContext.Provider value={
-      { 
-        selectedIngredients, setSelectedIngredients, 
-        selectedAppliances, setSelectedAppliances, 
-        selectedUstensils, setSelectedUstensils, 
-        searchText, setSearchText,
-        filteredRecipes, setFilteredRecipes,
-        recipes
-      }}>
+    <SharedContext.Provider
+      value={{
+        selectedIngredients,
+        setSelectedIngredients,
+        selectedAppliances,
+        setSelectedAppliances,
+        selectedUstensils,
+        setSelectedUstensils,
+        searchText,
+        setSearchText,
+        filteredRecipes,
+        setFilteredRecipes,
+        recipes,
+      }}
+    >
       {children}
     </SharedContext.Provider>
   );
