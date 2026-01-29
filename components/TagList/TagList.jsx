@@ -33,7 +33,7 @@ const TagList = ({tags, title, selection, setSelection}) => {
           </div>
           <div>
             {selection.map((tag, index) => (
-              <span key={`tag-sel-${index}`} className={`${styles.item} ${styles.selected}`} onClick={() => setSelection(selection.filter(t => t !== tag))}>{tag}</span>
+              <span key={`tag-sel-${index}`} className={`${styles.item} ${styles.selected}`} onClick={() => setSelection(selection.filter(t => t !== tag))}><span className={styles.close}></span>{tag}</span>
             ))}
           </div>
           <div className={styles.list}>

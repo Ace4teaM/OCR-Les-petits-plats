@@ -92,6 +92,7 @@
 
 
 .item {
+  position: relative;
   display: block;
   font-size: 14px;
   margin-bottom: 3px;
@@ -108,3 +109,16 @@
   padding: 8px 6px;
 }
 
+
+.close {
+  position: absolute;
+  top:calc(32px / 2 - 8px);
+  right: 8px;
+  background-image: url("/close.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
+  width: 17px;
+  height: 17px;
+  cursor: pointer;
+}
