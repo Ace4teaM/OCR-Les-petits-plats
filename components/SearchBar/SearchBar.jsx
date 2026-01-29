@@ -2,7 +2,7 @@
 
 import styles from './SearchBar.module.css';
 import TagList from '@/components/TagList/TagList';
-import { useEffect, useState } from 'react';
+import { useMemo } from 'react';
 import { useShared } from "@/components/SharedContext/SharedContext";
 
 export default function SearchBar() {
@@ -12,44 +12,46 @@ export default function SearchBar() {
   const {selectedAppliances, setSelectedAppliances} = useShared();
   const {selectedUstensils, setSelectedUstensils} = useShared();
 
-  const readIngredients = () => {
+  const readIngredients = (recipes) => {
     const tmp = new Set();
-    for (const i of filteredRecipes.map(r => r.ingredients)) {
+    for (const i of recipes.map(r => r.ingredients)) {
       for (const ii of i){
         tmp.add(ii.ingredient[0].toUpperCase() + ii.ingredient.slice(1).toLowerCase());}
     }
     return [...tmp].sort();
   }
 
-  const [ingredients, setIngredients] = useState(readIngredients());
-
-  const readUstensils = () => {
+  const readUstensils = (recipes) => {
     const tmp = new Set();
-    for (const i of filteredRecipes.map(r => r.ustensils)) {
+    for (const i of recipes.map(r => r.ustensils)) {
       for (const ii of i){
         tmp.add(ii[0].toUpperCase() + ii.slice(1).toLowerCase());}
     }
     return [...tmp].sort();
   }
 
-  const [ustensils, setUstensils] = useState(readUstensils());
-
-  const readAppliances = () => {
+  const readAppliances = (recipes) => {
     const tmp = new Set();
-    for (const i of filteredRecipes.map(r => r.appliance)) {
+    for (const i of recipes.map(r => r.appliance)) {
       tmp.add(i[0].toUpperCase() + i.slice(1).toLowerCase());
     }
     return [...tmp].sort();
   }
 
-  const [appliances, setAppliances] = useState(readAppliances());
+  const ingredients = useMemo(
+    () => readIngredients(filteredRecipes),
+    [filteredRecipes]
+  );
 
+  const ustensils = useMemo(
+    () => readUstensils(filteredRecipes),
+    [filteredRecipes]
+  );
 
-  useEffect(() => {
-    setIngredients(readIngredients());
-    setUstensils(readUstensils());
-    setAppliances(readAppliances());
-  }, [filteredRecipes]);
+  const appliances = useMemo(
+    () => readAppliances(filteredRecipes),
+    [filteredRecipes]
+  );
 
   return (
     <section className={styles.container}>
