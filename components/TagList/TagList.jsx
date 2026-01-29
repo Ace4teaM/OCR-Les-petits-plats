@@ -1,11 +1,8 @@
 "use client";
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import styles from './TagList.module.css';
 
 const TagList = ({tags, title, selection, setSelection}) => {
-
-  // contient les éléments sélectionnables
-  const [selectable, setSelectable] = useState([...tags]);
 
   // texte de la saisie
   const [filter, setFilter] = useState("");
@@ -13,10 +10,14 @@ const TagList = ({tags, title, selection, setSelection}) => {
   // affiche/cache le détail de la liste
   const [show, setShow] = useState(false);
 
-  // Filtre les éléments sélectionnables en fonction de la saisie utilisateur
-  useEffect(() => {
-    setSelectable(tags.filter(t => t.toLowerCase().includes(filter.toLowerCase()) && !selection.includes(t)));
-  }, [tags, filter])
+  // Filtre les éléments sélectionnables en fonction de la sélection actuelle
+  const selectable = useMemo(() => {
+    return tags.filter(
+      t =>
+        t.toLowerCase().includes(filter.toLowerCase()) &&
+        !selection.includes(t)
+    );
+  }, [tags, filter, selection]);
 
   return (
     <div className={styles.container}>
@@ -32,12 +33,12 @@ const TagList = ({tags, title, selection, setSelection}) => {
           </div>
           <div>
             {selection.map((tag, index) => (
-              <span key={`tag-sel-${index}`} className={`${styles.item} ${styles.selected}`} onClick={() => {setSelectable([...selectable, tag]); setSelection(selection.filter(t => t !== tag))}}>{tag}</span>
+              <span key={`tag-sel-${index}`} className={`${styles.item} ${styles.selected}`} onClick={() => setSelection(selection.filter(t => t !== tag))}>{tag}</span>
             ))}
           </div>
           <div className={styles.list}>
             {selectable.map((tag, index) => (
-              <span key={`tag-${index}`} className={styles.item} onClick={() => {setSelection([...selection, tag]); setSelectable(selectable.filter(t => t !== tag))}}>{tag}</span>
+              <span key={`tag-${index}`} className={styles.item} onClick={() => setSelection([...selection, tag])}>{tag}</span>
             ))}
           </div>
         </div>
